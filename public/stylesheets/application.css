@@ -25,6 +25,7 @@ body {
   /*max-width: 700px;*/
   margin: 0 auto;
   padding: .2em;
+  padding-left: .4em;
 }
 
 #head h1 a {
