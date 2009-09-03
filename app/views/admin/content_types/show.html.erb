@@ -1,0 +1,12 @@
+<p>
+  <b>Type:</b>
+  <%=h @content_type.type %>
+</p>
+<p>
+  <b>Data:</b>
+  <%=h @content_type.data %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_content_type_path(@content_type) %> |
+<%= link_to 'Back', admin_content_types_path %>

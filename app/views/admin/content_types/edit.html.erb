@@ -1,0 +1,19 @@
+<h1>Editing content_type</h1>
+
+<% form_for([:admin, @content_type]) do |f| %>
+
+  <p>
+    <%= f.label :type %>
+    <%= f.text_field :type %>
+  </p>
+  <p>
+    <%= f.label :data %>
+    <%= f.text_area :data %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', [:admin, @content_type] %> |
+<%= link_to 'Back', admin_content_types_path %>
