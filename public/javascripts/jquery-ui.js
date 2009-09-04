@@ -1050,7 +1050,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 
 					inst._trigger("toSortable", event);
 					inst.dropped = this.instance.element; //draggable revert needs that
-					//hack so receive/update callbacks work (mostly)
+					//hack so receive/new callbacks work (mostly)
 					inst.currentItem = inst.element;
 					this.instance.fromOutside = inst;
 
@@ -3519,7 +3519,7 @@ $.widget("ui.sortable", $.extend({}, $.ui.mouse, {
 		// everything else normalized again
 		var delayedTriggers = [], self = this;
 
-		// We first have to update the dom position of the actual currentItem
+		// We first have to new the dom position of the actual currentItem
 		// Note: don't do it if the current item is already removed (by a user), or it gets reappended (see #4088)
 		if(!this._noFinalSort && this.currentItem[0].parentNode) this.placeholder.before(this.currentItem);
 		this._noFinalSort = null;
@@ -3534,7 +3534,7 @@ $.widget("ui.sortable", $.extend({}, $.ui.mouse, {
 		}
 
 		if(this.fromOutside && !noPropagation) delayedTriggers.push(function(event) { this._trigger("receive", event, this._uiHash(this.fromOutside)); });
-		if((this.fromOutside || this.domPosition.prev != this.currentItem.prev().not(".ui-sortable-helper")[0] || this.domPosition.parent != this.currentItem.parent()[0]) && !noPropagation) delayedTriggers.push(function(event) { this._trigger("update", event, this._uiHash()); }); //Trigger update callback if the DOM position has changed
+		if((this.fromOutside || this.domPosition.prev != this.currentItem.prev().not(".ui-sortable-helper")[0] || this.domPosition.parent != this.currentItem.parent()[0]) && !noPropagation) delayedTriggers.push(function(event) { this._trigger("update", event, this._uiHash()); }); //Trigger new callback if the DOM position has changed
 		if(!$.ui.contains(this.element[0], this.currentItem[0])) { //Node was moved out of the current element
 			if(!noPropagation) delayedTriggers.push(function(event) { this._trigger("remove", event, this._uiHash()); });
 			for (var i = this.containers.length - 1; i >= 0; i--){
@@ -5694,7 +5694,7 @@ $.extend(Datepicker.prototype, {
 	   @param  input     element - ignored
 	   @param  dateText  string - the initial date to display (in the current format)
 	   @param  onSelect  function - the function(dateText) to call when a date is selected
-	   @param  settings  object - update the dialog date picker instance's settings (anonymous object)
+	   @param  settings  object - new the dialog date picker instance's settings (anonymous object)
 	   @param  pos       int[2] - coordinates for the dialog's position within the screen or
 	                     event - with x/y coordinates or
 	                     leave empty for default (screen centre)
@@ -5833,7 +5833,7 @@ $.extend(Datepicker.prototype, {
 
 	/* Update or retrieve the settings for a date picker attached to an input field or division.
 	   @param  target  element - the target input field or division or span
-	   @param  name    object - the new settings to update or
+	   @param  name    object - the new settings to new or
 	                   string - the name of the setting to change or retrieve,
 	                   when retrieving also 'all' for all instance settings or
 	                   'defaults' for all global defaults
@@ -6285,7 +6285,7 @@ $.extend(Datepicker.prototype, {
 	/* Update any alternate field to synchronise with the main field. */
 	_updateAlternate: function(inst) {
 		var altField = this._get(inst, 'altField');
-		if (altField) { // update alternate field too
+		if (altField) { // new alternate field too
 			var altFormat = this._get(inst, 'altFormat') || this._get(inst, 'dateFormat');
 			var date = this._getDate(inst);
 			dateStr = this.formatDate(altFormat, date, this._getFormatConfig(inst));
@@ -8611,7 +8611,7 @@ $.widget("ui.tabs", {
 			o.selected = ((o.selected >= 0 && this.anchors[o.selected]) || o.selected < 0) ? o.selected : 0;
 
 			// Take disabling tabs via class attribute from HTML
-			// into account and update option properly.
+			// into account and new option properly.
 			// A selected tab cannot become disabled.
 			o.disabled = $.unique(o.disabled.concat(
 				$.map(this.lis.filter('.ui-state-disabled'),
@@ -8644,15 +8644,15 @@ $.widget("ui.tabs", {
 			});
 
 		}
-		// update selected after add/remove
+		// new selected after add/remove
 		else {
 			o.selected = this.lis.index(this.lis.filter('.ui-tabs-selected'));
 		}
 
-		// update collapsible
+		// new collapsible
 		this.element[o.collapsible ? 'addClass' : 'removeClass']('ui-tabs-collapsible');
 
-		// set or update cookie after init and add/remove respectively
+		// set or new cookie after init and add/remove respectively
 		if (o.cookie) {
 			this._cookie(o.selected, o.cookie);
 		}

@@ -76,3 +76,6 @@ body {
 
 */
 
+label {
+  display: block;
+}

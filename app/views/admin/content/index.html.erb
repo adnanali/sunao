@@ -1,0 +1,26 @@
+<h1>Listing Content</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Public</th>
+  </tr>
+
+<% @contents.each do |content| %>
+  <tr>
+    <td><%=h content.type %></td>
+    <td><%=h content.title %></td>
+    <td><%=h content.body %></td>
+    <td><%=h content.public %></td>
+    <td><%= link_to 'Show', admin_content_path(content.id) %></td>
+    <td><%= link_to 'Edit', edit_admin_content_path(content.id) %></td>
+    <td><%= link_to 'Destroy', admin_content_path(content.id), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New content', new_admin_content_path %>

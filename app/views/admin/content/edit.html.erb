@@ -1,0 +1,28 @@
+<h1>Editing Content</h1>
+
+<% form_for([:admin, @content]) do |f| %>
+
+  <p>
+    <%= f.label :type  %>
+    <%= f.text_field :type %>
+  </p>
+  <p>
+    <%= f.label :title  %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body  %>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.label :public %>
+    <%= f.check_box :public %>
+  </p>
+
+  <p>
+    <%= submit_tag 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', admin_content_path(@content.id) %> |
+<%= link_to 'Back', admin_content_index_path %>

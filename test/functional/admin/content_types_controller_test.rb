@@ -30,7 +30,7 @@ class Admin::ContentTypesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update content_type" do
+  test "should new content_type" do
     put :update, :id => admin_content_types(:one).to_param, :content_type => { }
     assert_redirected_to content_type_path(assigns(:content_type))
   end

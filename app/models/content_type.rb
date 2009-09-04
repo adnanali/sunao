@@ -1,15 +1,10 @@
 class ContentType < CouchRest::ExtendedDocument
   use_database CouchRest.database!("mydb")
 
-  property :type
-  property :metadata
-  property :data
+  property :name
+  property :fields
 
-  view_by :type
+  view_by :name
 
   timestamps!
-
-  def to_param
-    self.id
-  end
 end

@@ -1,19 +1,19 @@
 <h1>Editing content_type</h1>
 
-<% form_for([:admin, @content_type]) do |f| %>
+<% form_tag([:admin, @content_type]) do %>
 
   <p>
-    <%= f.label :type %>
-    <%= f.text_field :type %>
+    <%= label_tag 'content_type[name]', "Name" %>
+    <%= text_field_tag 'content_type[name]', @content_type.name %>
   </p>
+  <!--<p>-->
+  <!--<%= label_tag :data %>-->
+  <!--<%= text_area_tag :data %>-->
+  <!--</p>-->
   <p>
-    <%= f.label :data %>
-    <%= f.text_area :data %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
+    <%= submit_tag 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', [:admin, @content_type] %> |
+<%= link_to 'Show', admin_content_type_path(@content_type.id) %> |
 <%= link_to 'Back', admin_content_types_path %>

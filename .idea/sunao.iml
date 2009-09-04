@@ -20,7 +20,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="[gem] rack (v1.0.0, /Library/Ruby/Gems/1.8/gems/rack-1.0.0)" level="application" />
     <orderEntry type="library" name="[gem] sqlite3-ruby (v1.2.3, /Users/aali/.gem/ruby/1.8/gems/sqlite3-ruby-1.2.3)" level="application" />
-    <orderEntry type="library" name="[gem] couchrest (v0.33, /Library/Ruby/Gems/1.8/gems/couchrest-0.33)" level="application" />
     <orderEntry type="library" name="[gem] mime-types (v1.16, /Library/Ruby/Gems/1.8/gems/mime-types-1.16)" level="application" />
     <orderEntry type="library" name="[gem] rest-client (v1.0.3, /Library/Ruby/Gems/1.8/gems/rest-client-1.0.3)" level="application" />
     <orderEntry type="library" name="[gem] activesupport (v2.3.3, /Library/Ruby/Gems/1.8/gems/activesupport-2.3.3)" level="application" />
@@ -30,6 +29,8 @@
     <orderEntry type="library" name="[gem] rails (v2.3.3, /Library/Ruby/Gems/1.8/gems/rails-2.3.3)" level="application" />
     <orderEntry type="library" name="[gem] activeresource (v2.3.3, /Library/Ruby/Gems/1.8/gems/activeresource-2.3.3)" level="application" />
     <orderEntry type="library" name="[gem] activerecord (v2.3.3, /Library/Ruby/Gems/1.8/gems/activerecord-2.3.3)" level="application" />
+    <orderEntry type="library" name="[gem] couchrest (v0.33, /Library/Ruby/Gems/1.8/gems/couchrest-0.33)" level="application" />
+    <orderEntry type="library" name="[gem] bluecloth (v2.0.5, /Users/aali/.gem/ruby/1.8/gems/bluecloth-2.0.5)" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <RMODULE_SETTINGS_STORAGE_ID NAME="NUMBER" VALUE="0" />

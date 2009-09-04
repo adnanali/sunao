@@ -1,17 +1,32 @@
 <h1>New Content Type</h1>
 
-<% form_for([:admin, @content_type]) do |f| %>
+<% form_tag([:admin, @content_type]) do %>
 
   <p>
-    <%= f.label :type %>
-    <%= f.text_field :type %>
+    <%= label_tag 'content_type[name]', "Name" %>
+    <%= text_field_tag 'content_type[name]' %>
   </p>
+  <!--<p>-->
+    <!--<%= label_tag :data %>-->
+    <!--<%= text_area_tag :data %>-->
+  <!--</p>-->
+  Fields: <br />
+  <div class="content_field" style="border: black solid 1px; padding: .8em;">
+    <p>
+      <%= label_tag 'content_type[fields][name][]', "Name" %>
+      <%= text_field_tag 'content_type[fields][name][]' %>
+    </p>
+    <p>
+      <%= label_tag 'content_type[fields][display_name][]', "Display Name" %>
+      <%= text_field_tag 'content_type[fields][display_name][]' %>
+    </p>
+    <p>
+      <%= label_tag 'content_type[fields][type][]', "Type" %>
+      <%= text_field_tag 'content_type[fields][type][]' %>
+    </p>
+  </div>
   <p>
-    <%= f.label :data %>
-    <%= f.text_area :data %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
+    <%= submit_tag 'Create' %>
   </p>
 <% end %>
 
