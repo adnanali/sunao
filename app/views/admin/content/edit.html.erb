@@ -1,6 +1,6 @@
 <h1>Editing Content</h1>
 
-<% form_for([:admin, @content]) do |f| %>
+<% form_for([:admin, @content], :url => admin_content_path(@content.id)) do |f| %>
 
   <p>
     <%= f.label :type  %>
