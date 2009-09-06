@@ -12,6 +12,13 @@ class Content < CouchRest::ExtendedDocument
 
   view_by :slug
   view_by :type
+  view_by :public_posts,
+    :map => 
+      "function(doc) {
+        if (doc['couchrest-type'] == 'Content' && doc['type'] == 'post' && doc['public'] == '1') {
+          emit(Date.parse(doc.published_date), doc);
+        }
+      }"
 
   timestamps!
 
