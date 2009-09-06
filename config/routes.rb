@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :content_types
     admin.resources :content
+    admin.resources :user
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

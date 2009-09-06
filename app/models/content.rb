@@ -6,6 +6,7 @@ class Content < CouchRest::ExtendedDocument
   property :title
   property :body
   property :slug
+  property :published_date
   
   property :public
 
@@ -15,8 +16,15 @@ class Content < CouchRest::ExtendedDocument
   timestamps!
 
   save_callback :before, :slugify
+  save_callback :before, :published_date_check
 
+  protected
   def slugify
     self['slug'] = title.downcase.gsub(/[^a-z0-9]/,'-').squeeze('-').gsub(/^\-|\-$/,'') if self['slug'].blank?
+  end
+
+  def published_date_check
+    RAILS_DEFAULT_LOGGER.info self['public'].type
+    self['published_date'] = Time.now if self['public'] == '1' and self['published_date'].blank?
   end
 end

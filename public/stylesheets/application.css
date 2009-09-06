@@ -79,3 +79,13 @@ body {
 label {
   display: block;
 }
+
+.post .title {
+  margin-bottom: 0;
+}
+
+.content .meta {
+  margin-top: 0;
+  font-size: 75%;
+
+}

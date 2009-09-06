@@ -1,7 +1,7 @@
 require 'digest/md5'
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  def md(text)
+  def gfm(text)
     # Extract pre blocks
     extractions = {}
     text.gsub!(%r{<pre>.*?</pre>}m) do |match|
@@ -25,6 +25,6 @@ module ApplicationHelper
       "\n\n" + extractions[$1]
     end
 
-    markdown(text)
+    text  
   end
 end

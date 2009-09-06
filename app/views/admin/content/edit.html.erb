@@ -11,12 +11,20 @@
     <%= f.text_field :title %>
   </p>
   <p>
+    <%= f.label :slug  %>
+    <%= f.text_field :slug %>
+  </p>
+  <p>
     <%= f.label :body  %>
     <%= f.text_area :body %>
   </p>
   <p>
     <%= f.label :public %>
     <%= f.check_box :public %>
+  </p>
+  <p>
+    <%= f.label :published_date  %>
+    <%= f.text_field :published_date %>
   </p>
 
   <p>

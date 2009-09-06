@@ -1,3 +1,10 @@
-<h2><%=h @content.title %></h2>
+<div class="content <%= @content.type %>">
+  <h2 class="title"><%=h @content.title %></h2>
+  <% if @content.type == "post" %>
+    <p class="meta"><%= Time.parse(@content.published_date).strftime('%A, %B %d, %Y') %> </p>
+  <% end %>
 
-<%=md @content.body %>
+  <div class="body">
+    <%=markdown @content.body %>
+  </div>
+</div>
