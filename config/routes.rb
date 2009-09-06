@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.resources :comments
+  
   map.namespace :admin do |admin|
     admin.resources :content_types
     admin.resources :content

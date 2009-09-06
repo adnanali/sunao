@@ -1,0 +1,24 @@
+<p>
+  <b>Type:</b>
+  <%=h @content.type %>
+</p>
+<p>
+  <b>Title:</b>
+  <%=h @content.title %>
+</p>
+<p>
+  <b>Body:</b>
+  <%=h @content.body %>
+</p>
+<p>
+  <b>Public:</b>
+  <%=h @content.public %>
+</p>
+<p>
+  <b>Published Date:</b>
+  <%=h @content.published_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_content_path(@content.id) %> |
+<%= link_to 'Back', admin_content_index_path %>

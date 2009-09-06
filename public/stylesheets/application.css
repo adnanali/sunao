@@ -90,7 +90,64 @@ label {
 
 }
 
+.content .body {
+  margin-bottom: 0;
+}
+
+.content h4 {
+  margin-top: 0;
+}
+
 .title a {
   text-decoration: none;
   color: #222;
+}
+
+textarea, input {
+  border: 1px solid black;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: .2em;
+  margin: 5px 0;
+}
+
+#comments textarea {
+  width: 99%;
+}
+
+#comments {
+  font-family: corbel,'lucida grande',helvetica,sans-serif;
+}
+
+#comments form {
+  text-align: right;
+}
+
+#comments form label{
+  display: inline;
+}
+
+#comments form p{
+  margin: 0;
+}
+
+#comment-list li {
+  margin-bottom: 20px;
+}
+
+.comment .body p {
+  margin: 0;
+}
+
+.comment .body .meta{
+  text-align: right;
+}
+
+a, a:visited {
+  color: black;
+}
+
+a:hover {
+  color: gray;
 }
