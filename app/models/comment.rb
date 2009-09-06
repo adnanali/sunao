@@ -10,5 +10,8 @@ class Comment < CouchRest::ExtendedDocument
 
   view_by :content_id
 
+  validates_present :name, :email, :body, :content_id
+  #validates_format :error, :format => :email_address
+
   timestamps!
 end

@@ -1,2 +1,10 @@
+$(".field_error").removeClass("field_error");
+$(".error_message").remove();
+<% if @comment.id.blank? %>
+<% @comment.errors.each_with_key do |field, e| %>
+  $("#comment_<%=field%>").addClass("field_error").after("<p class='error_message'><%= e %></p>");        
+<% end %>
+<% else %>
 $("#comment-list").append('<%= escape_javascript render :partial => @comment %>');
 $("#new_comment").resetForm();
+<% end %>

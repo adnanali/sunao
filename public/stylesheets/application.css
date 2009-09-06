@@ -151,3 +151,11 @@ a, a:visited {
 a:hover {
   color: gray;
 }
+
+.field_error {
+  border: 3px solid red;
+}
+
+.error_message {
+  color: red;
+}

@@ -32,6 +32,7 @@ class CommentsController < ApplicationController
         format.js
         #format.html { render :partial => @comment }
       else
+        format.js
         #format.html { render :action => "new" }
       end
     end
