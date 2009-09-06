@@ -89,3 +89,8 @@ label {
   font-size: 75%;
 
 }
+
+.title a {
+  text-decoration: none;
+  color: #222;
+}
