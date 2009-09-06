@@ -54,7 +54,7 @@ class Admin::ContentController < ApplicationController
     @content.destroy
 
     respond_to do |format|
-      #format.html { redirect_to(admin_content_types_url) }
+      format.html { redirect_to(admin_content_index_url) }
       #format.xml  { head :ok }
     end
   end

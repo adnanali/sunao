@@ -25,6 +25,15 @@ class Content < CouchRest::ExtendedDocument
   save_callback :before, :slugify
   save_callback :before, :published_date_check
 
+  def self.latest_post
+    Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
+      :per_page => 10, :page => 1, :descending => true, :include_docs => true)[0] 
+  end
+
+  def permalink
+    self.slug
+  end
+
   protected
   def slugify
     self['slug'] = title.downcase.gsub(/[^a-z0-9]/,'-').squeeze('-').gsub(/^\-|\-$/,'') if self['slug'].blank?
