@@ -1,3 +1,7 @@
+require 'openid'
+require 'openid/extensions/sreg'
+require 'openid/extensions/pape'
+require 'openid/store/filesystem'
 class SessionsController < ApplicationController
   def new
   end
