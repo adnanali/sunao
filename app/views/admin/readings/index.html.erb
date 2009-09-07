@@ -1,0 +1,24 @@
+<h1>Listing Reading</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Title</th>
+    <th>Public</th>
+  </tr>
+
+<% @readings.each do |reading| %>
+  <tr>
+    <td><%=h reading.type %></td>
+    <td><%=h reading.title %></td>
+    <td><%=h reading.public %></td>
+    <td><%= link_to 'Show', admin_reading_path(reading.id) %></td>
+    <td><%= link_to 'Edit', edit_admin_reading_path(reading.id) %></td>
+    <td><%= link_to 'Destroy', admin_reading_path(reading.id), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New reading', new_admin_reading_path %>

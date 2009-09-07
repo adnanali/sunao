@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.resources :requests
+  map.resources :readings
   map.resources :archives
   map.resources :submissions
   map.resources :comments
@@ -12,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :content_types
     admin.resources :content
     admin.resources :user
+    admin.resources :readings
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

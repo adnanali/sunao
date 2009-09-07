@@ -5,6 +5,11 @@
   <% end %>
 
   <div class="body">
+    <% if @content['_attachments'] %>
+    <p>
+      
+    </p>
+    <% end %>
     <%=markdown @content.body %>
   </div>
   <hr />

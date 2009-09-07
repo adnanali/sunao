@@ -9,6 +9,8 @@ class Content < CouchRest::ExtendedDocument
   property :published_date
   property :user_id
 
+  property :reading_id
+
   property :public
 
   view_by :slug
@@ -42,6 +44,22 @@ class Content < CouchRest::ExtendedDocument
 
   def comments
     Comment.by_content_id(:key => id, :descending => false)
+  end
+
+  def attachment=(attachment)
+    if attachment.is_a?(Tempfile)
+      attachment_filename = File.basename(attachment.original_filename)
+      attachment_options = {
+        :file => attachment,
+        :name => attachment_filename,
+        :content_type => attachment.content_type
+      }
+      if self.has_key?('_attachments') && self['_attachments'].has_key?(attachment_filename)
+        update_attachment(attachment_options)
+      else
+        create_attachment(attachment_options)
+      end
+    end
   end
 
   protected

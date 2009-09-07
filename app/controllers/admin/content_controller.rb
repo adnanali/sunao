@@ -3,6 +3,7 @@ class Admin::ContentController < ApplicationController
   
   def index
     @contents = Content.all
+    @contents.sort! { |b,a| a.created_at <=> b.created_at }
 
     respond_to do |format|
       format.html 
@@ -33,7 +34,7 @@ class Admin::ContentController < ApplicationController
     respond_to do |format|
       if @content.save
         flash[:notice] = 'Content was successfully created.'
-        format.html { redirect_to(@content) }
+        format.html { redirect_to(admin_content_path(@content.id)) }
       else
         format.html { render :action => "new" }
       end

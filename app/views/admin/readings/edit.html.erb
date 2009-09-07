@@ -1,0 +1,63 @@
+<h1>Editing Reading</h1>
+
+<% form_for([:admin, @reading], :url => admin_reading_path(@reading.id)) do |f| %>
+  <p>
+    <%= f.label :title  %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :reading_language  %>
+    <%= f.text_field :reading_language %>
+  </p>
+
+  <p>
+    <%= f.label :description  %>
+    <%= f.text_area :description, :rows => 5, :cols => 60 %>
+  </p>
+
+  <% @reading.words.each do |lang, words| %>
+    <p>
+      <%= f.label :words_language  %>
+      <%= text_field_tag 'reading[words_language][]', lang %>
+    </p>
+
+    <p>
+      <%= f.label :words_body  %>
+      <%= text_area_tag 'reading[words_body][]', words, :rows => 15, :cols => 60 %>
+    </p>
+  <% end %>
+
+
+  <p>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </p>
+
+  <p>
+    <%= f.label :author_id %>
+    <%= f.text_field :author_id %>
+  </p>
+
+  <p>
+    <%= f.label :source %>
+    <%= f.text_field :source %>
+  </p>
+
+  <p>
+    <%= f.label :public %>
+    <%= f.check_box :public %>
+  </p>
+
+  <p>
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </p>
+
+  <p>
+    <%= submit_tag 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', admin_reading_path(@reading.id) %> |
+<%= link_to 'Back', admin_readings_path %>
