@@ -10,7 +10,7 @@
   <hr />
   <% if @content['view_single'] == true %>
     <div id="comments">
-      <h4>Comments</h4>
+      <h4><% if @comments.size %> <%= @comments.size %> <% end %>Comments</h4>
 
       <ol id="comment-list">
         <%= render :partial => "comments/comment", :collection => @comments %>
