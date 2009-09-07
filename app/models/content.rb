@@ -39,7 +39,11 @@ class Content < CouchRest::ExtendedDocument
   end
 
   def user
-    User.get(user_id)
+    @user ||= User.get(user_id)
+  end
+
+  def reading
+    @reading ||= Reading.get(reading_id)
   end
 
   def comments

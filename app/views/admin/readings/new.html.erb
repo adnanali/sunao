@@ -17,6 +17,7 @@
     <%= f.text_area :description, :rows => 5, :cols => 60 %>
   </p>
 
+  <div id="words_form">
   <p>
     <%= f.label :words_language  %>
     <%= text_field_tag 'reading[words_language][]' %>
@@ -26,6 +27,17 @@
     <%= f.label :words_body  %>
     <%= text_area_tag 'reading[words_body][]', nil, :rows => 15, :cols => 60 %>
   </p>
+  </div>
+
+  <p>
+    <a href="#" id="more_words">More Words</a>
+  </p>
+  <script type="text/javascript">
+    $("#more_words").click(function() {
+      $("#words_form").append('<p><%= text_field_tag 'reading[words_language][]' %></p> <p><%= text_area_tag 'reading[words_body][]', nil, :rows => 15, :cols => 60 %></p>');
+      return false;
+    });
+  </script>
 
 
   <p>
