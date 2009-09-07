@@ -7,8 +7,8 @@
   <div class="body">
     <%=markdown @content.body %>
   </div>
+  <hr />
   <% if @content['view_single'] == true %>
-    <hr />
     <div id="comments">
       <h4>Comments</h4>
 
@@ -71,5 +71,7 @@
 
       </script>
     </div>
+  <% else %>
+    <p class="meta"><a href="<%= "#{@content.permalink}#comments"%>"><%= pluralize @content.comments.size, 'comment' %></a></p>
   <% end %>
 </div>
