@@ -1,0 +1,11 @@
+<h2>Pending Requests</h2>
+<%= link_to "new request", new_request_path %>
+<ul class="requests">
+<% @contents.each do |content| %>
+  <li>
+    <div class="date"><%= Time.parse(content.published_date).strftime('%B %d, %Y') %> </div>
+    <div class="title"><a href="<%= request_url(content.id) %>"><%=h content.title + " (#{content.comments.size})"%></a></div>
+    <!--<div class="by meta"><%= content.user.display_name %></div>-->
+  </li>
+<% end %>
+</ul>

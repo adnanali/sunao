@@ -1,0 +1,25 @@
+<h2>New Request</h2>
+
+<p>
+  Enter the title of the material you'd like to hear, along with the actual text or link to the text.
+  <br />
+  <br />
+  Thanks!
+</p>
+
+<% form_for(@content, :url => requests_path) do |f|%>
+
+  <p>
+    <%= f.label :title  %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body  %>
+    <%= f.text_area :body, :rows => 5 %>
+  </p>
+
+  <p>
+    <%= submit_tag 'submit request' %>
+  </p>
+<% end %>
+

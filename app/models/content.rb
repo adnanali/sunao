@@ -46,7 +46,10 @@ class Content < CouchRest::ExtendedDocument
 
   protected
   def slugify
-    self['slug'] = title.downcase.gsub(/[^a-z0-9]/,'-').squeeze('-').gsub(/^\-|\-$/,'') if self['slug'].blank?
+    if self['slug'].blank?
+      self['slug'] = title.downcase.gsub(/[^a-z0-9]/,'-').squeeze('-').gsub(/^\-|\-$/,'')
+      self['slug'] = "#{type}-#{self['slug']}" if type != 'post' && type != 'page'
+    end
   end
 
   def published_date_check

@@ -1,5 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.resources :requests
+  map.resources :archives
+  map.resources :submissions
   map.resources :comments
   map.resource :sessions, :collection => { :complete => :get } 
   map.login '/login', :controller => :sessions, :action => :new
@@ -53,5 +56,5 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 
-  map.connect '*id', :controller => 'content', :action => 'show'
+  map.page '*id', :controller => 'content', :action => 'show'
 end
