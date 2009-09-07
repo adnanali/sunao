@@ -159,3 +159,21 @@ a:hover {
 .error_message {
   color: red;
 }
+
+.error {
+  border: 2px solid red;
+  background-color: lightcoral;
+  padding: 5px;
+}
+
+.notice {
+  border: 2px solid gold;
+  background-color: yellow;
+  padding: 5px;
+}
+
+.success {
+  border: 2px solid green;
+  background-color: lightgreen;
+  padding: 5px;
+}

@@ -7,11 +7,13 @@ class Content < CouchRest::ExtendedDocument
   property :body
   property :slug
   property :published_date
-  
+  property :user_id
+
   property :public
 
   view_by :slug
   view_by :type
+  view_by :user_id
   view_by :public_posts,
     :map => 
       "function(doc) {
@@ -32,6 +34,14 @@ class Content < CouchRest::ExtendedDocument
 
   def permalink
     self.slug
+  end
+
+  def user
+    User.get(user_id)
+  end
+
+  def comments
+    Comment.by_content_id(:key => id, :descending => false)
   end
 
   protected

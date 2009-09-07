@@ -7,11 +7,13 @@ class Comment < CouchRest::ExtendedDocument
   property :email
   property :body
   property :content_id
+  property :user_id
 
   view_by :content_id
+  view_by :user_id
 
   validates_present :name, :email, :body, :content_id
-  #validates_format :error, :format => :email_address
+  #validates_format :email, :format => :email_address
 
   timestamps!
 end

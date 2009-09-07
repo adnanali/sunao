@@ -1,0 +1,12 @@
+<li id="comment-<%= comment.id %>" class="comment">
+  <div class="body">
+    <%=markdown h comment.body  %>
+    <p class="meta">
+      - <% if comment.link.blank? %> <%=h comment.name %>
+        <% else %> <a href="<%=h comment.link %>"><%=h comment.name %></a>
+        <% end %>
+        on <%= comment.created_at.strftime("%A, %B %d, %Y") %> at <%= comment.created_at.strftime("%I:%M %p") %>
+      <a href="#comment-<%= comment.id %>">#</a>
+    </p>
+  </div>
+</li>

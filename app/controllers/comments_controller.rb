@@ -26,6 +26,13 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
 
+    if logged_in?
+      @comment.user_id = current_user.id
+      @comment.email = current_user.email
+      @comment.name = current_user.display_name
+      @comment.link = current_user.link
+    end
+
     respond_to do |format|
       if @comment.save
         #flash[:notice] = 'Content was successfully created.'

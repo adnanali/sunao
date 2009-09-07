@@ -4,7 +4,7 @@ class ContentController < ApplicationController
 
     @content['view_single'] = true
 
-    @comments = Comment.by_content_id(:key => @content.id, :descending => false)
+    @comments = @content.comments
     @comments.sort! { |a,b| a.created_at <=> b.created_at }
     @comment = Comment.new(:content_id => @content.id)
     

@@ -4,6 +4,7 @@ class User < CouchRest::ExtendedDocument
 
   property :type
   property :name
+  property :link
   property :username
   property :display_name
   property :email
@@ -11,10 +12,11 @@ class User < CouchRest::ExtendedDocument
 
   timestamps!
 
-  validates_present :type, :name, :username, :display_name
+  validates_present :type, :openid, :username, :display_name
 
   view_by :username
   view_by :type
+  view_by :openid
 
   save_callback :before, :set_type
   save_callback :before, :set_display_name

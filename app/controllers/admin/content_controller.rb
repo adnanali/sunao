@@ -1,4 +1,6 @@
 class Admin::ContentController < ApplicationController
+  before_filter :need_admin
+  
   def index
     @contents = Content.all
 
@@ -25,6 +27,8 @@ class Admin::ContentController < ApplicationController
 
   def create
     @content = Content.new(params[:content])
+
+    @content.user_id = current_user.id
 
     respond_to do |format|
       if @content.save
