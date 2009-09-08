@@ -4,7 +4,7 @@
     <p class="meta">by <%= @content.user.display_name %> on <%= Time.parse(@content.published_date).strftime('%A, %B %d, %Y') %> </p>
   <% end %>
 
-  <% if @content.reading_id %>
+  <% if not @content.reading_id.blank? %>
     <div class="reading">
       <% if @content.reading['_attachments'] %>
         <ul>
