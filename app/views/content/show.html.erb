@@ -16,20 +16,29 @@
           <% end %>
         </ul>
       <% end %>
+    <%  unless @content.reading.words.blank? %>
     <% @content.reading.words.each do |words| %>
+      <% unless words[0].blank? %>
       <p>
         <b><%= words[0] %>:</b>
         <%=markdown h words[1] %>
       </p>
+      <% end %>
     <% end %>
+    <% end %>
+
+    <% unless @content.reading.author.blank? %>
     <p>
       <b>Author:</b>
       <%=h @content.reading.author %>
     </p>
+    <% end %>
+    <% unless @content.reading.source.blank? %>
     <p>
       <b>Source:</b>
       <%=h @content.reading.source %>
     </p>
+    <% end %>
 
     </div>
   <% end %>
