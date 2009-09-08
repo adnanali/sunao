@@ -61,7 +61,8 @@ class Content < CouchRest::ExtendedDocument
   end
 
   def comments
-    Comment.by_content_id(:key => id, :descending => false)
+    comments = Comment.by_content_id(:key => id, :descending => false)
+    comments.sort! { |a,b| a.created_at <=> b.created_at }
   end
 
   def attachment=(attachment)

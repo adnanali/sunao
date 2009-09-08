@@ -2,3 +2,4 @@ log/*.log
 couchdb.txt
 db/cstore/*
 .htaccess
+.idea/workspace.xml
