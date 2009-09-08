@@ -17,13 +17,16 @@
     <%  unless content.reading.words.blank? %>
       <% content.reading.words.each do |words| %>
         <% unless words[0].blank? %>
+          <div class="words">
           <p>
             <b><%= words[0] %>:</b>
             <%=markdown gfm h words[1] %>
           </p>
+          </div>
         <% end %>
       <% end %>
     <% end %>
+    <div class="clear"></div>
 
     <% unless content.reading.author.blank? %>
       <p>
