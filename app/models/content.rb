@@ -27,11 +27,16 @@ class Content < CouchRest::ExtendedDocument
   timestamps!
 
   save_callback :before, :slugify
+  save_callback :before, :clear_cache
   save_callback :before, :published_date_check
 
   def self.latest_post
-    Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
-      :per_page => 10, :page => 1, :descending => true, :include_docs => true)[0] 
+    post = CACHE.get("content_latest_post")
+    return post unless post.nil?
+    post = Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
+      :per_page => 10, :page => 1, :descending => true, :include_docs => true)[0]
+    CACHE.write("content_latest_post", post)
+    post
   end
 
   def permalink
@@ -67,6 +72,9 @@ class Content < CouchRest::ExtendedDocument
   end
 
   protected
+  def clear_cache
+    CACHE.delete("content_latest_post")
+  end
   def slugify
     if self['slug'].blank?
       self['slug'] = title.downcase.gsub(/[^a-z0-9]/,'-').squeeze('-').gsub(/^\-|\-$/,'')
