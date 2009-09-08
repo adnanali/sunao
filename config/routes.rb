@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.sound_file '/file/:id/*filename', :controller => :readings, :action => :show
   map.resources :requests
-  map.resources :readings
   map.resources :archives
   map.resources :submissions
   map.resources :comments
