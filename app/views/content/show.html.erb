@@ -19,7 +19,7 @@
     <% @content.reading.words.each do |words| %>
       <p>
         <b><%= words[0] %>:</b>
-        <%=markdown h words[1] %>
+        <%=markdown gfm h words[1] %>
       </p>
     <% end %>
     <p>
@@ -40,7 +40,7 @@
       
     </p>
     <% end %>
-    <%=markdown @content.body %>
+    <%=markdown gfm @content.body %>
   </div>
   <hr />
   <% if @content['view_single'] == true %>

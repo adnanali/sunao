@@ -13,7 +13,7 @@
 <% @reading.words.each do |words| %>
   <p>
     <b><%= words[0] %>:</b>
-    <%=markdown h words[1] %>
+    <%=markdown gfm h words[1] %>
   </p>
 <% end %>
 <p>
