@@ -26,6 +26,6 @@ class User < CouchRest::ExtendedDocument
   end
 
   def set_display_name
-    self['display_name'] = self['username'] if self['display_name'].blank?
+    self['display_name'] = self['username'] 
   end
 end

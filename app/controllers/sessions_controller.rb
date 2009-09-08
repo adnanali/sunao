@@ -120,16 +120,18 @@ class SessionsController < ApplicationController
 
         # first let's see if the user is created already
 
-        @user = User.by_openid(:key => params[:openid1_claimed_id])
+        openid_identity = params[:openid1_claimed_id] || params['openid.identity']
+        @user = User.by_openid(:key => openid_identity)
 
+        logger.info "USER: #{params.inspect}"
         logger.info "USER: #{@user.inspect}"
 
         if @user.size == 0
           # create the user
-          @user = User.new(:openid => params[:openid1_claimed_id],
-            :username => params['openid.sreg.nickname'],
-            :display_name => params['openid.sreg.nickname'],
-            :email => params['openid.sreg.email'],
+          @user = User.new(:openid => openid_identity,
+            :username => params['openid.sreg.nickname'] || "no username",
+            :display_name => params['openid.sreg.nickname'] || 'no display name',
+            :email => params['openid.sreg.email'] || "no email",
             :type => "user"
           )
           logger.info "USER222: #{@user.inspect}"
@@ -141,6 +143,11 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
 
         flash[:success] = "It worked! You're in."
+        if @user.display_name == 'no username'
+          flash[:success] = "#{flash[:success]} BUT, we need to enter a nickname, and if you need us to get in touch with you, please leave an email address as well."
+          redirect_to edit_sessions_path
+          return true
+        end  
         if session[:return_to]
           redirect_to session[:return_to]
           session[:return_to] = nil
@@ -154,6 +161,26 @@ class SessionsController < ApplicationController
       else
     end
     redirect_to root_url
+  end
+
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if current_user.update_attributes(params[:user])
+        flash[:notice] = 'Your details were successfully updated.'
+        format.html do
+          if session[:return_to]
+            redirect_to(session[:return_to]) 
+          else
+            redirect_to(edit_sessions_path) 
+          end
+        end
+      else
+        format.html { render :action => "edit" }
+      end
+    end
   end
 
   private

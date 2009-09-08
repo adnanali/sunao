@@ -1,0 +1,18 @@
+<h2>Edit your user details</h2>
+
+<% form_for(current_user, :url => sessions_path) do |f|%>
+
+  <p>
+    <%= f.label :username, "Nickname"  %>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :email  %>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= submit_tag 'update details' %>
+  </p>
+<% end %>
+
