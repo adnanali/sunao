@@ -27,7 +27,7 @@ class Admin::ReadingsController < ApplicationController
   end
 
   def create
-    params[:reading][:words] = {}
+    params[:reading][:words] = []
     params[:reading][:words_language].each_with_index do |lang, i|
       params[:reading]['words'][i] = [lang, params[:reading][:words_body][i]]
     end
@@ -49,7 +49,7 @@ class Admin::ReadingsController < ApplicationController
   end
 
   def update
-    params[:reading][:words] = {}
+    params[:reading][:words] = []
     params[:reading][:words_language].each_with_index do |lang, i|
       params[:reading]['words'][i] = [lang, params[:reading][:words_body][i]]
     end

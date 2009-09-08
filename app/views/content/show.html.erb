@@ -16,10 +16,10 @@
           <% end %>
         </ul>
       <% end %>
-    <% @content.reading.words.each do |lang, words| %>
+    <% @content.reading.words.each do |words| %>
       <p>
-        <b><%= lang %>:</b>
-        <%=markdown h words %>
+        <b><%= words[0] %>:</b>
+        <%=markdown h words[1] %>
       </p>
     <% end %>
     <p>
