@@ -31,7 +31,7 @@ body {
   clear: both;
 }
 
-#header ul {
+#header .nav {
   float: right;
   margin: 0;
   color: #F4F3DB;
@@ -39,11 +39,11 @@ body {
   font-size: .6em;
 }
 
-#header ul a {
+#header .nav a {
   text-decoration: none;
 }
 
-#header li {
+#header .nav li {
   color: #F4F3DB;
   list-style: square;
   display: inline;
@@ -232,4 +232,79 @@ a:hover {
 #new_content input, #new_content textarea {
   width: 100%;
 
+}
+
+
+#footer {
+  margin: 0 auto;
+  margin-top: 5em;
+  margin-bottom: 0em;
+  max-width: 100%;
+  font-family: "Helvetica", sans-serif;
+  background: #000000 none repeat scroll 0 0;
+  border-top: lightgray solid 2px;
+}
+
+#footer h1 {
+  float: left;
+}
+
+#footer .nav {
+  float: right;
+  margin: 0;
+  color: #F4F3DB;
+  font-family: Verdana, sans-serif;
+  font-size: .6em;
+}
+
+#footer .nav a {
+  text-decoration: none;
+}
+
+#footer .nav li {
+  color: #F4F3DB;
+  list-style: square;
+  display: inline;
+  margin-right: .4em;
+}
+
+#foot {
+/*max-width: 700px;*/
+  margin: 0 auto;
+  padding: .2em;
+  padding-left: .4em;
+}
+
+#foot h1 a {
+  text-decoration: none;
+  color: #F4F3DB;
+}
+
+#foot {
+  text-decoration: none;
+  color: #F4F3DB;
+}
+
+#footer_boxes {
+  font-size: .8em;
+}
+
+.footer_box li {
+  list-style: square;
+}
+
+.footer_box {
+  border-right: 1px solid #F4F3DB;
+  width: 25%;
+}
+
+.footer_box a {
+  text-decoration: none;
+}
+
+#footer h1, #footer h2 {
+  color: #F4F3DB;
+  font-size: .8em;
+  padding: 0;
+  margin: 0;
 }

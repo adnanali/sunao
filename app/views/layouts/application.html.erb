@@ -16,7 +16,7 @@
       <div id="head">
         <h1><a href="<%= root_url %>">kuch sunao</a></h1>
         <!--<h2>ab kuch to kahoo, yaar</h2>-->
-        <ul>
+        <ul class="nav">
           <li><%= link_to "about", page_path("about") %></li>
           <li><%= link_to "archives", archives_path %></li>
           <li><%= link_to "requests", requests_path %></li>
@@ -37,6 +37,29 @@
       <% end %>
 
       <%= yield %>
+    </div>
+    <div id="footer">
+      <div id="foot">
+        <!--<h1><a href="<%= root_url %>">kuch sunao</a></h1>-->
+        <!--<h2>ab kuch to kahoo, yaar</h2>-->
+        <!--<ul>-->
+          <!--<li><%= link_to "about", page_path("about") %></li>-->
+          <!--<li><%= link_to "archives", archives_path %></li>-->
+          <!--<li><%= link_to "requests", requests_path %></li>-->
+          <!--<li><%= link_to "submissions", new_submission_path %></li>-->
+        <!--</ul>-->
+        <div class="clear"></div>
+        <div id="footer_boxes">
+          <div class="footer_box">
+            <h3>latest posts</h3>
+            <ul>
+            <% Content.latest_posts.each do |post| %>
+              <li><%= link_to post.title, page_url(post.permalink) %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

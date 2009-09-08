@@ -34,8 +34,17 @@ class Content < CouchRest::ExtendedDocument
     post = CACHE.get("content_latest_post")
     return post unless post.nil?
     post = Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
-      :per_page => 10, :page => 1, :descending => true, :include_docs => true)[0]
+      :per_page => 1, :page => 1, :descending => true, :include_docs => true)[0]
     CACHE.add("content_latest_post", post)
+    post
+  end
+
+  def self.latest_posts
+    post = CACHE.get("content_latest_posts")
+    return post unless post.nil?
+    post = Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
+                            :per_page => 5, :page => 1, :descending => true, :include_docs => true)
+    CACHE.add("content_latest_posts", post)
     post
   end
 
@@ -73,7 +82,10 @@ class Content < CouchRest::ExtendedDocument
 
   protected
   def clear_cache
-    CACHE.delete("content_latest_post")
+    if type == 'post'
+      CACHE.delete("content_latest_post")
+      CACHE.delete("content_latest_posts")
+    end
   end
   def slugify
     if self['slug'].blank?
