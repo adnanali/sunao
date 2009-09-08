@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+
+#RewriteEngine On
+#RewriteCond %{HTTP_HOST} !^www.kuchsunao.com$ [NC]
+#RewriteRule ^(.*)$ http://www.kuchsunao.com/$1 [R=301,QSA,L]
+
+</IfModule>
+
