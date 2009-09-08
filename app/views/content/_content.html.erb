@@ -3,10 +3,14 @@
     <% if content.reading['_attachments'] %>
       <ul>
         <% content.reading['_attachments'].each do |attachment_name, attachment_attributes| %>
-          <object type="application/x-shockwave-flash" data="/flash/player_mp3_maxi.swf" width="200" height="20">
-            <param name="movie" value="/flash/player_mp3_maxi.swf" />
-            <param name="FlashVars" value="mp3=<%= reading_path(:id => content.reading.slug, :filename => attachment_name) %>" />
-          </object>
+          <% if params[:format] == 'rss' %>
+            <%= link_to "[audio for #{content.reading.title}]", reading_path(:id => content.reading.slug, :filename => attachment_name) %>
+          <% else %>
+            <object type="application/x-shockwave-flash" data="/flash/player_mp3_maxi.swf" width="200" height="20">
+              <param name="movie" value="/flash/player_mp3_maxi.swf" />
+              <param name="FlashVars" value="mp3=<%= reading_path(:id => content.reading.slug, :filename => attachment_name) %>" />
+            </object>
+          <% end %>
         <% end %>
       </ul>
     <% end %>
