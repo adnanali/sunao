@@ -8,8 +8,10 @@ class PagesController < ApplicationController
   end
 
   def rss
+    params[:format] = 'rss'
+    @articles = Content.all_posts
     respond_to do |format|
-      format.rss
+      format.rss { render :layout => false }
     end
   end
 end

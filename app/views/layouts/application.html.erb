@@ -9,6 +9,7 @@
     <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js' %>
     <%= javascript_include_tag 'jquery.form', 'jquery.openid', 'application' %>
     <%= stylesheet_link_tag 'openid', 'application' %>
+    <%= auto_discovery_link_tag(:rss, rss_url) %>
   </head>
 
   <body>

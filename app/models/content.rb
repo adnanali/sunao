@@ -48,6 +48,15 @@ class Content < CouchRest::ExtendedDocument
     post
   end
 
+  def self.all_posts
+    post = CACHE.get("content_all_posts")
+    return post unless post.nil?
+    post = Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
+                            :per_page => 10000, :page => 1, :descending => true, :include_docs => true)
+    CACHE.add("content_all_posts", post)
+    post
+  end
+
   def permalink
     self.slug
   end
@@ -86,6 +95,7 @@ class Content < CouchRest::ExtendedDocument
     if type == 'post'
       CACHE.delete("content_latest_post")
       CACHE.delete("content_latest_posts")
+      CACHE.delete("content_all_posts")
     end
   end
   def slugify
