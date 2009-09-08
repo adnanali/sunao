@@ -17,7 +17,7 @@ module ApplicationHelper
 
     # in very clear cases, let newlines become <br /> tags
     text.gsub!(/^[\w\<][^\n]*\n+/) do |x|
-      x =~ /\n{2}/ ? x : (x.strip!; x << " \n")
+      x =~ /\n{2}/ ? x : (x.strip!; x << "  \n")
     end
 
     # Insert pre block extractions

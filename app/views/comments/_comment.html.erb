@@ -1,6 +1,6 @@
 <li id="comment-<%= comment.id %>" class="comment">
   <div class="body">
-    <%=markdown h comment.body  %>
+    <%=markdown gfm h comment.body  %>
     <p class="meta">
       - <% if comment.link.blank? %> <%=h comment.name %>
         <% else %> <a href="<%=h comment.link %>"><%=h comment.name %></a>
