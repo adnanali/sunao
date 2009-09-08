@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_filter :need_login, :only => [:create]
+  before_filter :need_login, :only => [:create, :new]
   
   def index
     @contents = Content.by_type :key => "request"

@@ -1,0 +1,62 @@
+<h1>Submit Reading</h1>
+
+<% form_for(@reading, :url => submissions_path, :html => {:multipart => true}) do |f|%>
+
+  <p>
+    <%= f.label :title  %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :reading_language  %>
+    <%= f.text_field :reading_language %>
+  </p>
+
+  <p>
+    <%= f.label :description  %>
+    <%= f.text_area :description, :rows => 5, :cols => 60 %>
+  </p>
+
+  <div id="words_form">
+  <p>
+    <%= f.label :words_language  %>
+    <%= text_field_tag 'reading[words_language][]' %>
+  </p>
+
+  <p>
+    <%= f.label :words_body  %>
+    <%= text_area_tag 'reading[words_body][]', nil, :rows => 15, :cols => 60 %>
+  </p>
+  </div>
+
+  <p>
+    <a href="#" id="more_words">Translations</a>
+  </p>
+  <script type="text/javascript">
+    $("#more_words").click(function() {
+      $("#words_form").append('<p><%= text_field_tag 'reading[words_language][]' %></p> <p><%= text_area_tag 'reading[words_body][]', nil, :rows => 15, :cols => 60 %></p>');
+      return false;
+    });
+  </script>
+
+
+  <p>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </p>
+
+  <p>
+    <%= f.label :source %>
+    <%= f.text_field :source %>
+  </p>
+
+  <p>
+    <%= f.label "Attachment" %>
+    <%= f.file_field "attachment" %>
+  </p>
+
+  <p>
+    <%= submit_tag 'Submit' %>
+  </p>
+<% end %>
+
