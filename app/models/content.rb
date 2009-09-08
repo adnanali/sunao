@@ -35,7 +35,7 @@ class Content < CouchRest::ExtendedDocument
     return post unless post.nil?
     post = Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
       :per_page => 10, :page => 1, :descending => true, :include_docs => true)[0]
-    CACHE.write("content_latest_post", post)
+    CACHE.add("content_latest_post", post)
     post
   end
 
