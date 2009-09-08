@@ -1,3 +1,4 @@
 log/*.log
 couchdb.txt
 db/cstore/*
+.idea/workspace.xml
