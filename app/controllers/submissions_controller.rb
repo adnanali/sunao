@@ -20,7 +20,7 @@ class SubmissionsController < ApplicationController
   def create
     params[:reading][:words] = {}
     params[:reading][:words_language].each_with_index do |lang, i|
-      params[:reading]['words'][lang] = params[:reading][:words_body][i]
+      params[:reading]['words'][i] = [lang, params[:reading][:words_body][i]]
     end
     params[:reading].delete('words_language')
     params[:reading].delete('words_body')
