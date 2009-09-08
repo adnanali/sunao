@@ -6,4 +6,10 @@ class PagesController < ApplicationController
 
     render "content/show"
   end
+
+  def rss
+    respond_to do |format|
+      format.rss
+    end
+  end
 end

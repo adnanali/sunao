@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :sessions, :collection => { :complete => :get } 
   map.login '/login', :controller => :sessions, :action => :new
   map.logout '/logout', :controller => :sessions, :action => :destroy
+  map.rss '/rss', :controller => :pages, :action => :rss
 
   map.namespace :admin do |admin|
     admin.resources :content_types
