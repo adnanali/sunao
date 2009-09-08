@@ -1,5 +1,5 @@
 class ReadingsController < ApplicationController
-  before_filter :need_admin
+  before_filter :need_login, :except => [:show]
   
   def index
     @readings = Reading.all
