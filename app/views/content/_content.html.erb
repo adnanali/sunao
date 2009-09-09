@@ -32,12 +32,11 @@
       <p>
         <b>Author:</b>
         <%=h content.reading.author %>
-      </p>
-    <% end %>
-    <% unless content.reading.source.blank? %>
-      <p>
-        <b>Source:</b>
-        <%=h content.reading.source %>
+        <% unless content.reading.source.blank? %>
+            <br />
+            <b>Source:</b>
+            <%=h content.reading.source %>
+        <% end %>
       </p>
     <% end %>
 

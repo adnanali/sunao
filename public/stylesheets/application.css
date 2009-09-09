@@ -214,6 +214,7 @@ a:hover {
 }
 .requests li {
   list-style: none;
+  font-size: .8em;
 }
 
 .requests .date {
