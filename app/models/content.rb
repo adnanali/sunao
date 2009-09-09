@@ -35,7 +35,7 @@ class Content < CouchRest::ExtendedDocument
     return post unless post.nil?
     post = Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
       :per_page => 1, :page => 1, :descending => true, :include_docs => true)[0]
-    CACHE.add("content_latest_post", post)
+    CACHE.set("content_latest_post", post)
     post
   end
 
@@ -44,7 +44,7 @@ class Content < CouchRest::ExtendedDocument
     return post unless post.nil?
     post = Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
                             :per_page => 5, :page => 1, :descending => true, :include_docs => true)
-    CACHE.add("content_latest_posts", post)
+    CACHE.set("content_latest_posts", post)
     post
   end
 
@@ -53,7 +53,7 @@ class Content < CouchRest::ExtendedDocument
     return post unless post.nil?
     post = Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
                             :per_page => 10000, :page => 1, :descending => true, :include_docs => true)
-    CACHE.add("content_all_posts", post)
+    CACHE.set("content_all_posts", post)
     post
   end
 
