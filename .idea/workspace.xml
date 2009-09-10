@@ -52,10 +52,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/content/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="10" selection-start="2710" selection-end="2710" vertical-scroll-proportion="0.5652174">
+            <state line="65" column="0" selection-start="2225" selection-end="2225" vertical-scroll-proportion="-0.6956522">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="content.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/content.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="46" column="131" selection-start="1340" selection-end="1340" vertical-scroll-proportion="0.65473145">
               <folding />
             </state>
           </provider>
@@ -709,13 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/content.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/application.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="303" column="0" selection-start="4099" selection-end="4099" vertical-scroll-proportion="0.0">
@@ -725,7 +727,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/content/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="10" selection-start="2710" selection-end="2710" vertical-scroll-proportion="0.5652174">
+        <state line="65" column="0" selection-start="2225" selection-end="2225" vertical-scroll-proportion="-0.6956522">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/content.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="131" selection-start="1340" selection-end="1340" vertical-scroll-proportion="0.65473145">
           <folding />
         </state>
       </provider>

@@ -73,6 +73,7 @@
   <% else %>
     <p class="meta"><a href="<%= "#{@content.permalink}#comments"%>"><%= pluralize @content.comments.size, 'comment' %></a></p>
   <% end %>
+  <% if @content.type == 'post' %>
   <p class="post_nav">
     <% if @content.next_post %>
     <span class="next meta">
@@ -85,4 +86,5 @@
     </span>
     <% end %>
   </p>
+  <% end %>
 </div>
