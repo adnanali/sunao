@@ -319,3 +319,11 @@ a:hover {
   font-size: .8em;
   font-family:Arial, Helvetica, sans-serif;
 }
+
+.post_nav .prev {
+  float: right;
+}
+
+.post_nav .next {
+  float: left;
+}

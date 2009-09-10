@@ -23,6 +23,13 @@ class Content < CouchRest::ExtendedDocument
           emit(Date.parse(doc.published_date), doc);
         }
       }"
+  view_by :posts_date,
+    :map =>
+      "function(doc) {
+        if (doc.type == 'post') {
+          emit([doc.published_date, doc.slug], null);
+        }
+      }";
 
   timestamps!
 
@@ -30,6 +37,16 @@ class Content < CouchRest::ExtendedDocument
   save_callback :before, :clear_cache
   save_callback :before, :published_date_check
 
+  def prev_post
+    @prev_post ||= Content.paginate(:design_doc => 'Content', :view_name => 'by_posts_date',
+      :per_page => 2, :page => 1, :descending => true, :include_docs => true, :startkey => [published_date, slug])[1]
+  end
+
+  def next_post
+    @next_post ||= Content.paginate(:design_doc => 'Content', :view_name => 'by_posts_date',
+                            :per_page => 2, :page => 1, :descending => false, :include_docs => true, :startkey => [published_date, slug])[1]
+  end
+  
   def self.latest_post
     post = CACHE.get("content_latest_post")
     return post unless post.nil?

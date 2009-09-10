@@ -73,4 +73,16 @@
   <% else %>
     <p class="meta"><a href="<%= "#{@content.permalink}#comments"%>"><%= pluralize @content.comments.size, 'comment' %></a></p>
   <% end %>
+  <p class="post_nav">
+    <% if @content.next_post %>
+    <span class="next meta">
+      &lt; <%= link_to @content.next_post.title, page_url(@content.next_post.slug) %> 
+    </span>
+    <% end %>
+    <% if @content.prev_post %>
+    <span class="prev meta">
+      <%= link_to @content.prev_post.title, page_url(@content.prev_post.slug) %> &gt;
+    </span>
+    <% end %>
+  </p>
 </div>
