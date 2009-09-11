@@ -39,38 +39,42 @@ class Content < CouchRest::ExtendedDocument
 
   def prev_post
     @prev_post ||= Content.paginate(:design_doc => 'Content', :view_name => 'by_posts_date',
-      :per_page => 2, :page => 1, :descending => true, :include_docs => true, :startkey => [published_date, slug])[1]
+      :per_page => 2, :page => 1, :descending => true, :include_docs => true, :startkey => [published_date.to_s, slug])[1]
   end
 
   def next_post
     @next_post ||= Content.paginate(:design_doc => 'Content', :view_name => 'by_posts_date',
-                            :per_page => 2, :page => 1, :descending => false, :include_docs => true, :startkey => [published_date, slug])[1]
+                            :per_page => 2, :page => 1, :descending => false, :include_docs => true, :startkey => [published_date.to_s, slug])[1]
+  end
+
+  def published_at
+    Time.zone.parse(self['published_date'])
   end
   
   def self.latest_post
-    post = CACHE.get("content_latest_post")
-    return post unless post.nil?
+    #post = CACHE.get("content_latest_post")
+    #return post unless post.nil?
     post = Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
       :per_page => 1, :page => 1, :descending => true, :include_docs => true)[0]
-    CACHE.set("content_latest_post", post)
+    #CACHE.set("content_latest_post", post)
     post
   end
 
   def self.latest_posts
-    post = CACHE.get("content_latest_posts")
-    return post unless post.nil?
+    #post = CACHE.get("content_latest_posts")
+    #return post unless post.nil?
     post = Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
                             :per_page => 5, :page => 1, :descending => true, :include_docs => true)
-    CACHE.set("content_latest_posts", post)
+    #CACHE.set("content_latest_posts", post)
     post
   end
 
   def self.all_posts
-    post = CACHE.get("content_all_posts")
-    return post unless post.nil?
+    #post = CACHE.get("content_all_posts")
+    #return post unless post.nil?
     post = Content.paginate(:design_doc => 'Content', :view_name => 'by_public_posts',
                             :per_page => 10000, :page => 1, :descending => true, :include_docs => true)
-    CACHE.set("content_all_posts", post)
+    #CACHE.set("content_all_posts", post)
     post
   end
 

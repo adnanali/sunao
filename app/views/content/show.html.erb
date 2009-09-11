@@ -1,7 +1,7 @@
 <div class="content <%= @content.type %>">
   <h2 class="title"><a href="<%= "#{root_url}#{@content.permalink}" %>"><%=h @content.title %></a></h2>
   <% if @content.type != "page" %>
-    <p class="meta">by <%= @content.user.display_name %> on <%= Time.parse(@content.published_date).strftime('%A, %B %d, %Y') %> </p>
+    <p class="meta">by <%= @content.user.display_name %> on <%= @content.published_at.strftime('%A, %B %d, %Y') %> </p>
   <% end %>
 
   <%= render :partial => 'content/content', :locals => {:content => @content} %>

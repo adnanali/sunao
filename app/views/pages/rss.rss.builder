@@ -10,7 +10,7 @@ xml.rss :version => "2.0" do
       xml.item do
         xml.title article.title
         xml.description render(:partial => 'content/content.html.erb', :locals => {:content => article})
-        xml.pubDate Time.parse(article.published_date).to_s(:rfc822)
+        xml.pubDate article.published_at.to_s(:rfc822)
         xml.link page_url(article.permalink)
         xml.guid page_url(article.permalink)
         unless article.reading_id.blank? 

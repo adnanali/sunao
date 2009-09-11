@@ -3,9 +3,9 @@
     <%=markdown gfm h comment.body  %>
     <p class="meta">
       - <% if comment.link.blank? %> <%=h comment.name %>
-        <% else %> <a href="<%=h comment.link %>"><%=h comment.name %></a>
+        <% else %> <a href="<%=h comment.http %>"><%=h comment.name %></a>
         <% end %>
-        on <%= comment.created_at.strftime("%A, %B %d, %Y") %> at <%= comment.created_at.strftime("%I:%M %p") %>
+        on <%= Time.zone.parse(comment.created_at.to_s).strftime("%A, %B %d, %Y") %> at <%= Time.zone.parse(comment.created_at.to_s).strftime("%I:%M %p") %>
       <a href="#comment-<%= comment.id %>">#</a>
     </p>
   </div>

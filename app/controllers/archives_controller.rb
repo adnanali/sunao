@@ -2,7 +2,7 @@ class ArchivesController < ApplicationController
 
   def index
     @contents = Content.by_type :key => "post"
-    @contents.sort! { |b,a| Time.parse(a.published_date) <=> Time.parse(b.published_date)}
+    @contents.sort! { |b,a| a.published_at <=> b.published_at}
 
     respond_to do |format|
       format.html 

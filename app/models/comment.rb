@@ -14,6 +14,10 @@ class Comment < CouchRest::ExtendedDocument
 
   validates_present :name, :email, :body, :content_id
   #validates_format :email, :format => :email_address
+  #
 
+  def http 
+    (link =~ /^http:\/\//) ? link : "http://#{link}"
+  end
   timestamps!
 end
