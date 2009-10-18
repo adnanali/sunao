@@ -39,6 +39,22 @@
         </p>
       <% end %>
       <script type="text/javascript">
+        $("a.delete-me").click(function() {
+          if ( confirm("Are you sure you want to delete this Post?") )
+            $.ajax({
+                url: this.href,
+                type: 'post',
+                dataType: 'script',
+                data: { '_method': 'delete', 'authenticity_token': AUTH_TOKEN },
+                success: function() {
+                  $(this).parent("li").remove();
+                }
+            });
+
+
+
+          return false;
+        });
         $("#new_comment").submit(function() {
           var options = {
             success: commentSuccess,

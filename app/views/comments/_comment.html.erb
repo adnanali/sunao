@@ -8,5 +8,10 @@
         on <%= Time.zone.parse(comment.created_at.to_s).strftime("%A, %B %d, %Y") %> at <%= Time.zone.parse(comment.created_at.to_s).strftime("%I:%M %p") %>
       <a href="#comment-<%= comment.id %>">#</a>
     </p>
+    <% if admin? %>
+    <div class="comment-admin">
+      <%= link_to "delete", comment_path(comment.id), :class => "delete-me" %>
+    </div>
+    <% end %>
   </div>
 </li>

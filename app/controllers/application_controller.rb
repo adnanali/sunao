@@ -4,6 +4,7 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  before_filter :set_title
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
@@ -29,11 +30,19 @@ class ApplicationController < ActionController::Base
   end
 
   def need_admin
-    if logged_in? and current_user.type == 'admin'
-      return true
-    end
+    return true if admin?
     flash[:notice] = "Sorry mate, you need to be an admin to do that"
     redirect_to root_url
     return false
+  end
+
+  helper_method :admin?
+  def admin?
+    return true if logged_in? and current_user.type == 'admin'
+    return false
+  end
+
+  def set_title
+    @content_for_title = "";
   end
 end

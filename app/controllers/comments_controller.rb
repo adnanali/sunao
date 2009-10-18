@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :need_admin, :only => [:destroy]
   def index
     @comments = Comment.all
 
@@ -64,6 +65,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(admin_comment_index_url) }
+      format.js { render :text => "$('#comment-#{params[:id]}').remove()" }
     end
   end
 
